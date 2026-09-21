@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Krushnai Sarees</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <div class="logo-section">
+
+            <img
+                src="./images/Logo.jpg.jpeg"
+                alt="Krushnai Sarees Logo"
+                class="logo"
+            >
+
+            <h2>Krushnai Sarees</h2>
+
+        </div>
+
+
+        <nav>
+
+            <a href="#home">Home</a>
+
+            <a href="#collection">Collection</a>
+
+            <a href="#cart">Cart 🛒</a>
+
+            <a href="#about">About</a>
+
+            <a href="#contact">Contact</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <h1>WELCOME TO KRUSHNAI</h1>
+
+            <p>
+                Tradition Wrapped in Elegance
+            </p>
+
+            <button
+                type="button"
+                onclick="showCollection()"
+            >
+                Explore Collection
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         COLLECTION
+    ========================== -->
+
+    <section id="collection" class="collection">
+
+        <h2>Our Saree Collection</h2>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search Saree..."
+                onkeyup="searchSarees()"
+            >
+
+        </div>
+
+
+        <!-- FILTER BUTTONS -->
+
+        <div class="filter-buttons">
+
+            <button
+                type="button"
+                onclick="filterSarees('all')"
+            >
+                All
+            </button>
+
+            <button
+                type="button"
+                onclick="filterSarees('traditional')"
+            >
+                Traditional
+            </button>
+
+            <button
+                type="button"
+                onclick="filterSarees('premium')"
+            >
+                Premium
+            </button>
+
+            <button
+                type="button"
+                onclick="filterSarees('silk')"
+            >
+                Silk
+            </button>
+
+            <button
+                type="button"
+                onclick="filterSarees('designer')"
+            >
+                Designer
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             SAREE CONTAINER
+        ========================== -->
+
+        <div class="saree-container">
+
+
+            <!-- SAREE 1 -->
+
+            <div
+                class="saree-card"
+                data-category="traditional"
+            >
+
+                <img
+                    src="images/saree1.jpg.jpeg"
+                    alt="Paithani Saree"
+                    class="saree-image"
+                >
+
+                <div class="saree-details">
+
+                    <span class="tag">NEW</span>
+
+                    <h3>Paithani Saree</h3>
+
+                    <p class="category">
+                        Traditional
+                    </p>
+
+                    <p>
+                        Beautiful traditional Paithani
+                        saree with elegant design.
+                    </p>
+
+                    <h4>₹2,499</h4>
+
+
+                    <button
+                        type="button"
+                        onclick="showDetails(this)"
+                    >
+                        View Details
+                    </button>
+
+
+                    <label class="select-saree">
+
+                        <input
+                            type="checkbox"
+                            class="saree-select"
+                            data-name="Paithani Saree"
+                            data-price="2499"
+                        >
+
+                        Select Saree
+
+                    </label>
+
+
+                    <button
+                        type="button"
+                        onclick="addToCart(this)"
+                    >
+                        Add to Cart 🛒
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SAREE 2 -->
+
+            <div
+                class="saree-card"
+                data-category="premium"
+            >
+
+                <img
+                    src="images/saree2.jpg.jpeg"
+                    alt="Banarasi Saree"
+                    class="saree-image"
+                >
+
+                <div class="saree-details">
+
+                    <span class="tag">PREMIUM</span>
+
+                    <h3>Banarasi Saree</h3>
+
+                    <p class="category">
+                        Premium
+                    </p>
+
+                    <p>
+                        Rich Banarasi saree with
+                        beautiful traditional patterns.
+                    </p>
+
+                    <h4>₹2,999</h4>
+
+
+                    <button
+                        type="button"
+                        onclick="showDetails(this)"
+                    >
+                        View Details
+                    </button>
+
+
+                    <label class="select-saree">
+
+                        <input
+                            type="checkbox"
+                            class="saree-select"
+                            data-name="Banarasi Saree"
+                            data-price="2999"
+                        >
+
+                        Select Saree
+
+                    </label>
+
+
+                    <button
+                        type="button"
+                        onclick="addToCart(this)"
+                    >
+                        Add to Cart 🛒
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SAREE 3 -->
+
+            <div
+                class="saree-card"
+                data-category="silk"
+            >
+
+                <img
+                    src="images/saree3.jpg.jpeg"
+                    alt="Kanjeevaram Saree"
+                    class="saree-image"
+                >
+
+                <div class="saree-details">
+
+                    <span class="tag">NEW</span>
+
+                    <h3>Kanjeevaram Saree</h3>
+
+                    <p class="category">
+                        Silk
+                    </p>
+
+                    <p>
+                        Elegant Kanjeevaram silk saree
+                        perfect for special occasions.
+                    </p>
+
+                    <h4>₹3,499</h4>
+
+
+                    <button
+                        type="button"
+                        onclick="showDetails(this)"
+                    >
+                        View Details
+                    </button>
+
+
+                    <label class="select-saree">
+
+                        <input
+                            type="checkbox"
+                            class="saree-select"
+                            data-name="Kanjeevaram Saree"
+                            data-price="3499"
+                        >
+
+                        Select Saree
+
+                    </label>
+
+
+                    <button
+                        type="button"
+                        onclick="addToCart(this)"
+                    >
+                        Add to Cart 🛒
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SAREE 4 -->
+
+            <div
+                class="saree-card"
+                data-category="silk"
+            >
+
+                <img
+                    src="images/saree4.jpg.jpeg"
+                    alt="Silk Saree"
+                    class="saree-image"
+                >
+
+                <div class="saree-details">
+
+                    <span class="tag">PREMIUM</span>
+
+                    <h3>Silk Saree</h3>
+
+                    <p class="category">
+                        Silk
+                    </p>
+
+                    <p>
+                        Premium silk saree with
+                        graceful traditional styling.
+                    </p>
+
+                    <h4>₹2,799</h4>
+
+
+                    <button
+                        type="button"
+                        onclick="showDetails(this)"
+                    >
+                        View Details
+                    </button>
+
+
+                    <label class="select-saree">
+
+                        <input
+                            type="checkbox"
+                            class="saree-select"
+                            data-name="Silk Saree"
+                            data-price="2799"
+                        >
+
+                        Select Saree
+
+                    </label>
+
+
+                    <button
+                        type="button"
+                        onclick="addToCart(this)"
+                    >
+                        Add to Cart 🛒
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SAREE 5 -->
+
+            <div
+                class="saree-card"
+                data-category="designer"
+            >
+
+                <img
+                    src="images/saree5.jpg.jpeg"
+                    alt="Designer Saree"
+                    class="saree-image"
+                >
+
+                <div class="saree-details">
+
+                    <span class="tag">TRENDING</span>
+
+                    <h3>Designer Saree</h3>
+
+                    <p class="category">
+                        Designer
+                    </p>
+
+                    <p>
+                        Stylish designer saree for
+                        modern and elegant occasions.
+                    </p>
+
+                    <h4>₹2,899</h4>
+
+
+                    <button
+                        type="button"
+                        onclick="showDetails(this)"
+                    >
+                        View Details
+                    </button>
+
+
+                    <label class="select-saree">
+
+                        <input
+                            type="checkbox"
+                            class="saree-select"
+                            data-name="Designer Saree"
+                            data-price="2899"
+                        >
+
+                        Select Saree
+
+                    </label>
+
+
+                    <button
+                        type="button"
+                        onclick="addToCart(this)"
+                    >
+                        Add to Cart 🛒
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SAREE 6 -->
+
+            <div
+                class="saree-card"
+                data-category="traditional"
+            >
+
+                <img
+                    src="images/saree6.jpg.jpeg"
+                    alt="Traditional Saree"
+                    class="saree-image"
+                >
+
+                <div class="saree-details">
+
+                    <span class="tag">SPECIAL</span>
+
+                    <h3>Traditional Saree</h3>
+
+                    <p class="category">
+                        Traditional
+                    </p>
+
+                    <p>
+                        Classic traditional saree with
+                        beautiful ethnic appearance.
+                    </p>
+
+                    <h4>₹3,199</h4>
+
+
+                    <button
+                        type="button"
+                        onclick="showDetails(this)"
+                    >
+                        View Details
+                    </button>
+
+
+                    <label class="select-saree">
+
+                        <input
+                            type="checkbox"
+                            class="saree-select"
+                            data-name="Traditional Saree"
+                            data-price="3199"
+                        >
+
+                        Select Saree
+
+                    </label>
+
+
+                    <button
+                        type="button"
+                        onclick="addToCart(this)"
+                    >
+                        Add to Cart 🛒
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- SAREE 7 -->
+
+<div
+    class="saree-card"
+    data-category="traditional"
+>
+
+    <img
+        src="images/saree7.jpg.jpeg"
+        alt="Maheshwari Saree"
+        class="saree-image"
+    >
+
+    <div class="saree-details">
+
+        <h3>Maheshwari Saree</h3>
+
+        <p class="category">
+            Traditional
+        </p>
+
+        <h4>₹2,799</h4>
+
+        <button
+            type="button"
+            onclick="showDetails(this)"
+        >
+            View Details
+        </button>
+
+        <button
+            type="button"
+            onclick="addToCart(this)"
+        >
+            Add to Cart 🛒
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- SAREE 8 -->
+
+<div
+    class="saree-card"
+    data-category="premium"
+>
+
+    <img
+        src="images/saree8.jpg.jpeg"
+        alt="Chanderi Saree"
+        class="saree-image"
+    >
+
+    <div class="saree-details">
+
+        <h3>Chanderi Saree</h3>
+
+        <p class="category">
+            Premium
+        </p>
+
+        <h4>₹3,299</h4>
+
+        <button
+            type="button"
+            onclick="showDetails(this)"
+        >
+            View Details
+        </button>
+
+        <button
+            type="button"
+            onclick="addToCart(this)"
+        >
+            Add to Cart 🛒
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- SAREE 9 -->
+
+<div
+    class="saree-card"
+    data-category="designer"
+>
+
+    <img
+        src="images/saree9.jpg.jpeg"
+        alt="Organza Saree"
+        class="saree-image"
+    >
+
+    <div class="saree-details">
+
+        <h3>Organza Saree</h3>
+
+        <p class="category">
+            Designer
+        </p>
+
+        <h4>₹2,999</h4>
+
+        <button
+            type="button"
+            onclick="showDetails(this)"
+        >
+            View Details
+        </button>
+
+        <button
+            type="button"
+            onclick="addToCart(this)"
+        >
+            Add to Cart 🛒
+        </button>
+
+    </div>
+
+</div>
+
+
+        <!-- ADD SELECTED -->
+
+        <div class="selected-cart-button">
+
+            <button
+                type="button"
+                onclick="addSelectedToCart()"
+            >
+                Add Selected Sarees to Cart 🛒
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CART
+    ========================== -->
+
+    <section id="cart" class="cart-section">
+
+        <h2>Your Shopping Cart 🛒</h2>
+
+
+        <div id="cartItems">
+
+            <p class="empty-cart">
+                Your cart is empty.
+            </p>
+
+        </div>
+
+
+        <div class="cart-summary">
+
+            <h3>
+                Total:
+                <span id="cartTotal">₹ 0</span>
+            </h3>
+
+
+            <button
+                type="button"
+                onclick="clearCart()"
+            >
+                Clear Cart
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CHECKOUT
+    ========================== -->
+
+    <section
+        id="checkout"
+        class="checkout-section"
+    >
+
+        <h2>Customer Details</h2>
+
+
+        <form onsubmit="placeOrder(event)">
+
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+                <label for="customerName">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+
+            <!-- MOBILE -->
+
+            <div class="form-group">
+
+                <label for="customerPhone">
+                    Mobile Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    placeholder="Enter 10 digit mobile number"
+                    maxlength="10"
+                    required
+                >
+
+            </div>
+
+
+            <!-- ADDRESS -->
+
+            <div class="form-group">
+
+                <label for="customerAddress">
+                    Full Address
+                </label>
+
+                <textarea
+                    id="customerAddress"
+                    placeholder="Enter your complete address"
+                    rows="4"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <!-- CITY -->
+
+            <div class="form-group">
+
+                <label for="customerCity">
+                    City
+                </label>
+
+                <input
+                    type="text"
+                    id="customerCity"
+                    placeholder="Enter your city"
+                    required
+                >
+
+            </div>
+
+
+            <!-- PINCODE -->
+
+            <div class="form-group">
+
+                <label for="customerPincode">
+                    Pincode
+                </label>
+
+                <input
+                    type="text"
+                    id="customerPincode"
+                    placeholder="Enter 6 digit pincode"
+                    maxlength="6"
+                    required
+                >
+
+            </div>
+
+
+            <!-- ORDER BUTTON -->
+
+            <button
+                type="submit"
+                class="place-order-btn"
+            >
+                Place Order on WhatsApp 📱
+            </button>
+
+
+        </form>
+
+    </section>
+
+
+    <!-- =========================
+         ORDER SUCCESS
+    ========================== -->
+
+    <div
+        id="orderSuccess"
+        class="order-success"
+        style="display:none;"
+    >
+
+        <div class="success-box">
+
+            <h2>
+                🎉 Order Placed Successfully!
+            </h2>
+
+
+            <p>
+                Thank you for shopping with
+                Krushnai Sarees.
+            </p>
+
+
+            <p>
+
+                <strong>
+                    Order ID:
+                </strong>
+
+                <span id="successOrderId"></span>
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    Order Date:
+                </strong>
+
+                <span id="successOrderDate"></span>
+
+            </p>
+
+
+            <button
+                type="button"
+                onclick="printInvoice()"
+            >
+                🧾 Print / Save Invoice
+            </button>
+
+
+            <button
+                type="button"
+                onclick="closeOrderSuccess()"
+            >
+                Continue Shopping
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section
+        id="about"
+        class="about-section"
+    >
+
+        <h2>About Krushnai Sarees</h2>
+
+        <p>
+            Krushnai Sarees brings you a beautiful
+            collection of traditional, premium,
+            silk and designer sarees.
+        </p>
+
+        <p>
+            Our aim is to provide elegant sarees
+            with quality, style and tradition.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section
+        id="contact"
+        class="contact-section"
+    >
+
+        <h2>Contact Us</h2>
+
+
+        <p>
+            📞
+            <strong>Phone:</strong>
+            9763239088
+        </p>
+
+
+        <p>
+            📧
+            <strong>Email:</strong>
+            krushnaisarees@gmail.com
+        </p>
+
+
+        <p>
+            📍
+            <strong>Location:</strong>
+            Maharashtra, India
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Krushnai Sarees.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
