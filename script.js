@@ -1,156 +1,193 @@
-/* =========================================
-   KRUSHNAI SAREES - JAVASCRIPT
-   ========================================= */
+/* =====================================================
+   KRUSHNAI SAREES - COMPLETE JAVASCRIPT
+===================================================== */
+
+
+let cart = [];
+
+let currentOrder = null;
+
+
+
+/* =====================================================
+   EXPLORE COLLECTION
+===================================================== */
 
 function showCollection() {
-    const collection = document.getElementById("collection");
+
+    const collection =
+        document.getElementById("collection");
 
     if (collection) {
+
         collection.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
+            behavior: "smooth"
         });
+
     }
+
 }
 
+
+
+/* =====================================================
+   SHOW DETAILS
+===================================================== */
 
 function showDetails(button) {
-    const card = button.closest(".saree-card");
 
-    if (!card) return;
+    const card =
+        button.closest(".saree-card");
 
-    const sareeName =
+    if (!card) {
+        return;
+    }
+
+
+    const name =
         card.querySelector("h3").textContent.trim();
 
-    const sareePrice =
-        card.querySelector("h4").textContent.trim();
 
-    const description =
-        card.querySelector(
-            ".saree-details > p:not(.category)"
-        ).textContent.trim();
+    const price =
+        card.querySelector(".price").textContent.trim();
+
 
     alert(
-        "KRUSHNAI SAREES\n\n" +
-        "Saree: " + sareeName + "\n" +
-        "Price: " + sareePrice + "\n\n" +
-        description
+        name +
+        "\n\nPrice: " +
+        price +
+        "\n\nBeautiful collection from Krushnai Sarees."
     );
+
 }
 
 
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
 function searchSarees() {
-    const searchInput =
+
+    const input =
         document.getElementById("searchInput");
 
     const searchText =
-        searchInput.value.toLowerCase().trim();
+        input.value.toLowerCase().trim();
+
 
     const cards =
         document.querySelectorAll(".saree-card");
 
+
     cards.forEach(function(card) {
 
-        const name =
-            card.querySelector("h3")
-            .textContent
-            .toLowerCase();
+        const text =
+            card.textContent.toLowerCase();
 
-        const category =
-            card.querySelector(".category")
-            .textContent
-            .toLowerCase();
 
-        if (
-            name.includes(searchText) ||
-            category.includes(searchText)
-        ) {
+        if (text.includes(searchText)) {
+
             card.style.display = "";
+
         } else {
+
             card.style.display = "none";
+
         }
 
     });
+
 }
 
+
+
+/* =====================================================
+   FILTER
+===================================================== */
 
 function filterSarees(category) {
 
     const cards =
         document.querySelectorAll(".saree-card");
 
+
     cards.forEach(function(card) {
 
         const cardCategory =
             card.getAttribute("data-category");
 
+
         if (
             category === "all" ||
             cardCategory === category
         ) {
+
             card.style.display = "";
+
         } else {
+
             card.style.display = "none";
+
         }
 
     });
+
 }
 
 
-// =========================================
-// CART
-// =========================================
 
-let cart = [];
-
+/* =====================================================
+   ADD TO CART
+===================================================== */
 
 function addToCart(button) {
 
     const card =
         button.closest(".saree-card");
 
-    if (!card) return;
+
+    if (!card) {
+        return;
+    }
+
 
     const name =
-        card.querySelector("h3")
-        .textContent
-        .trim();
+        card.querySelector("h3").textContent.trim();
+
 
     const priceText =
-        card.querySelector("h4")
-        .textContent
-        .trim();
+        card.querySelector(".price").textContent;
+
 
     const price =
         parseInt(
-            priceText
-                .replace("₹", "")
-                .replace(",", "")
-                .trim()
-        );
-
-    const image =
-        card.querySelector("img")
-        .getAttribute("src");
+            priceText.replace(/[^\d]/g, "")
+        ) || 0;
 
 
-    const existingItem =
+    const existing =
         cart.find(function(item) {
+
             return item.name === name;
+
         });
 
 
-    if (existingItem) {
+    if (existing) {
 
-        existingItem.quantity += 1;
+        existing.quantity++;
 
     } else {
 
         cart.push({
+
             name: name,
+
             price: price,
-            image: image,
+
             quantity: 1
+
         });
 
     }
@@ -158,12 +195,19 @@ function addToCart(button) {
 
     updateCart();
 
+
     alert(
         name +
-        " added to your cart! 🛒"
+        " added to cart 🛒"
     );
+
 }
 
+
+
+/* =====================================================
+   ADD SELECTED SAREES
+===================================================== */
 
 function addSelectedToCart() {
 
@@ -185,40 +229,46 @@ function addSelectedToCart() {
 
     selected.forEach(function(checkbox) {
 
-        const name =
-            checkbox.getAttribute("data-name");
-
-        const price =
-            parseInt(
-                checkbox.getAttribute("data-price")
-            );
-
-
         const card =
             checkbox.closest(".saree-card");
 
-        const image =
-            card.querySelector("img")
-            .getAttribute("src");
+
+        const name =
+            card.querySelector("h3").textContent.trim();
 
 
-        const existingItem =
+        const priceText =
+            card.querySelector(".price").textContent;
+
+
+        const price =
+            parseInt(
+                priceText.replace(/[^\d]/g, "")
+            ) || 0;
+
+
+        const existing =
             cart.find(function(item) {
+
                 return item.name === name;
+
             });
 
 
-        if (existingItem) {
+        if (existing) {
 
-            existingItem.quantity += 1;
+            existing.quantity++;
 
         } else {
 
             cart.push({
+
                 name: name,
+
                 price: price,
-                image: image,
+
                 quantity: 1
+
             });
 
         }
@@ -233,54 +283,61 @@ function addSelectedToCart() {
 
 
     alert(
-        selected.length +
-        " saree(s) added to your cart! 🛒"
+        "Selected sarees added to cart 🛒"
     );
 
-
-    const cartSection =
-        document.getElementById("cart");
-
-    if (cartSection) {
-
-        cartSection.scrollIntoView({
-            behavior: "smooth"
-        });
-
-    }
 }
 
 
-// =========================================
-// UPDATE CART
-// =========================================
+
+/* =====================================================
+   UPDATE CART
+===================================================== */
 
 function updateCart() {
 
     const cartItems =
         document.getElementById("cartItems");
 
+
     const cartTotal =
         document.getElementById("cartTotal");
 
 
-    if (!cartItems || !cartTotal) return;
+    const paymentTotal =
+        document.getElementById("paymentTotal");
+
+
+    if (!cartItems) {
+        return;
+    }
 
 
     if (cart.length === 0) {
 
         cartItems.innerHTML =
-            '<p class="empty-cart">' +
-            'Your cart is empty.' +
-            '</p>';
+            "<p>Your cart is empty.</p>";
 
-        cartTotal.textContent = "₹ 0";
+
+        if (cartTotal) {
+
+            cartTotal.textContent = "0";
+
+        }
+
+
+        if (paymentTotal) {
+
+            paymentTotal.textContent = "0";
+
+        }
+
 
         return;
     }
 
 
-    cartItems.innerHTML = "";
+    let html = "";
 
     let total = 0;
 
@@ -294,98 +351,123 @@ function updateCart() {
         total += itemTotal;
 
 
-        const cartItem =
-            document.createElement("div");
+        html += `
 
-        cartItem.className =
-            "cart-item";
+            <div class="cart-item">
 
+                <div class="cart-item-info">
 
-        cartItem.innerHTML =
+                    <strong>
+                        ${item.name}
+                    </strong>
 
-            '<div class="cart-product">' +
+                    <p>
+                        Price: ₹${item.price}
+                    </p>
 
-                '<img src="' +
-                    item.image +
-                    '" alt="' +
-                    item.name +
-                '">' +
-
-                '<div class="cart-product-info">' +
-
-                    '<h3>' +
-                        item.name +
-                    '</h3>' +
-
-                    '<p>' +
-                        'Price: ₹' +
-                        item.price.toLocaleString("en-IN") +
-                    '</p>' +
-
-                    '<div class="quantity-control">' +
-
-                        '<button type="button" ' +
-                            'onclick="decreaseQuantity(' +
-                            index +
-                            ')">' +
-                            '−' +
-                        '</button>' +
-
-                        '<span>' +
-                            item.quantity +
-                        '</span>' +
-
-                        '<button type="button" ' +
-                            'onclick="increaseQuantity(' +
-                            index +
-                            ')">' +
-                            '+' +
-                        '</button>' +
-
-                    '</div>' +
-
-                    '<p class="item-subtotal">' +
-                        'Subtotal: ₹' +
-                        itemTotal.toLocaleString("en-IN") +
-                    '</p>' +
-
-                '</div>' +
-
-            '</div>' +
-
-            '<button type="button" ' +
-                'class="remove-btn" ' +
-                'onclick="removeFromCart(' +
-                index +
-                ')">' +
-                'Remove' +
-            '</button>';
+                </div>
 
 
-        cartItems.appendChild(cartItem);
+                <div class="quantity-controls">
+
+                    <button
+                        type="button"
+                        onclick="decreaseQuantity(${index})"
+                    >
+                        −
+                    </button>
+
+
+                    <span>
+                        ${item.quantity}
+                    </span>
+
+
+                    <button
+                        type="button"
+                        onclick="increaseQuantity(${index})"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+
+                <strong>
+                    ₹${itemTotal}
+                </strong>
+
+
+                <button
+                    type="button"
+                    onclick="removeFromCart(${index})"
+                >
+                    Remove
+                </button>
+
+            </div>
+
+        `;
 
     });
 
 
-    cartTotal.textContent =
-        "₹ " +
-        total.toLocaleString("en-IN");
+    cartItems.innerHTML = html;
+
+
+    if (cartTotal) {
+
+        cartTotal.textContent =
+            total.toLocaleString("en-IN");
+
+    }
+
+
+    if (paymentTotal) {
+
+        paymentTotal.textContent =
+            total.toLocaleString("en-IN");
+
+    }
+
 }
 
+
+
+/* =====================================================
+   INCREASE
+===================================================== */
 
 function increaseQuantity(index) {
 
-    cart[index].quantity += 1;
+    if (!cart[index]) {
+        return;
+    }
+
+
+    cart[index].quantity++;
+
 
     updateCart();
+
 }
 
 
+
+/* =====================================================
+   DECREASE
+===================================================== */
+
 function decreaseQuantity(index) {
+
+    if (!cart[index]) {
+        return;
+    }
+
 
     if (cart[index].quantity > 1) {
 
-        cart[index].quantity -= 1;
+        cart[index].quantity--;
 
     } else {
 
@@ -393,29 +475,51 @@ function decreaseQuantity(index) {
 
     }
 
+
     updateCart();
+
 }
 
+
+
+/* =====================================================
+   REMOVE
+===================================================== */
 
 function removeFromCart(index) {
 
+    if (!cart[index]) {
+        return;
+    }
+
+
     cart.splice(index, 1);
 
+
     updateCart();
+
 }
 
+
+
+/* =====================================================
+   CLEAR CART
+===================================================== */
 
 function clearCart() {
 
     cart = [];
 
+
     updateCart();
+
 }
 
 
-// =========================================
-// GENERATE ORDER ID
-// =========================================
+
+/* =====================================================
+   GENERATE ORDER ID
+===================================================== */
 
 function generateOrderId() {
 
@@ -425,13 +529,16 @@ function generateOrderId() {
             Math.random() * 9000
         );
 
+
     return "KS" + number;
+
 }
 
 
-// =========================================
-// PLACE ORDER
-// =========================================
+
+/* =====================================================
+   PLACE ORDER
+===================================================== */
 
 function placeOrder(event) {
 
@@ -441,7 +548,7 @@ function placeOrder(event) {
     if (cart.length === 0) {
 
         alert(
-            "Please add at least one saree to your cart."
+            "Your cart is empty. Please add a saree first."
         );
 
         return;
@@ -449,123 +556,41 @@ function placeOrder(event) {
 
 
     const name =
-        document.getElementById("customerName")
+        document
+        .getElementById("customerName")
         .value.trim();
+
 
     const phone =
-        document.getElementById("customerPhone")
+        document
+        .getElementById("customerPhone")
         .value.trim();
+
 
     const address =
-        document.getElementById("customerAddress")
+        document
+        .getElementById("customerAddress")
         .value.trim();
+
 
     const city =
-        document.getElementById("customerCity")
+        document
+        .getElementById("customerCity")
         .value.trim();
+
 
     const pincode =
-        document.getElementById("customerPincode")
+        document
+        .getElementById("customerPincode")
         .value.trim();
 
-
-    if (!/^[0-9]{10}$/.test(phone)) {
-
-        alert(
-            "Please enter a valid 10 digit mobile number."
-        );
-
-        return;
-    }
-
-
-    if (!/^[0-9]{6}$/.test(pincode)) {
-
-        alert(
-            "Please enter a valid 6 digit pincode."
-        );
-
-        return;
-    }
-
-
-    // Order ID
-
-    const orderId =
-        generateOrderId();
-
-
-    // Date and time
-
-    const orderDate =
-        new Date();
-
-
-    const dateText =
-        orderDate.toLocaleDateString("en-IN");
-
-    const timeText =
-        orderDate.toLocaleTimeString("en-IN");
-
-
-    // Total
 
     let total = 0;
 
-
-    // WhatsApp message
-
-    let orderMessage =
-        "KRUSHNAI SAREES - NEW ORDER\n\n";
+    let orderDetails = "";
 
 
-    orderMessage +=
-        "Order ID: " +
-        orderId +
-        "\n";
-
-    orderMessage +=
-        "Order Date: " +
-        dateText +
-        "\n";
-
-    orderMessage +=
-        "Order Time: " +
-        timeText +
-        "\n\n";
-
-
-    orderMessage +=
-        "Customer Name: " +
-        name +
-        "\n";
-
-    orderMessage +=
-        "Customer Mobile: " +
-        phone +
-        "\n";
-
-    orderMessage +=
-        "Address: " +
-        address +
-        "\n";
-
-    orderMessage +=
-        "City: " +
-        city +
-        "\n";
-
-    orderMessage +=
-        "Pincode: " +
-        pincode +
-        "\n\n";
-
-
-    orderMessage +=
-        "ORDERED SAREES:\n";
-
-
-    cart.forEach(function(item, index) {
+    cart.forEach(function(item) {
 
         const itemTotal =
             item.price * item.quantity;
@@ -574,85 +599,30 @@ function placeOrder(event) {
         total += itemTotal;
 
 
-        orderMessage +=
-
-            (index + 1) +
-            ". " +
+        orderDetails +=
             item.name +
             " × " +
             item.quantity +
             " = ₹" +
-            itemTotal.toLocaleString("en-IN") +
-            "\n";
+            itemTotal +
+            "<br>";
 
     });
 
 
-    orderMessage +=
-        "\nTOTAL AMOUNT: ₹" +
-        total.toLocaleString("en-IN");
+    const orderId =
+        generateOrderId();
 
 
-    orderMessage +=
-        "\n\nPlease confirm my order.";
+    const orderDate =
+        new Date().toLocaleString("en-IN");
 
 
-    // =================================
-    // KRUSHNAI WHATSAPP NUMBER
-    // =================================
-
-    const shopWhatsAppNumber =
-        "919763239088";
-
-
-    const whatsappURL =
-        "https://wa.me/" +
-        shopWhatsAppNumber +
-        "?text=" +
-        encodeURIComponent(
-            orderMessage
-        );
-
-
-    // Open WhatsApp
-
-    window.open(
-        whatsappURL,
-        "_blank"
-    );
-
-
-    // =================================
-    // SHOW SUCCESS BOX
-    // =================================
-
-    document.getElementById(
-        "successOrderId"
-    ).textContent = orderId;
-
-
-    document.getElementById(
-        "successOrderDate"
-    ).textContent =
-        dateText +
-        " " +
-        timeText;
-
-
-    document.getElementById(
-        "orderSuccess"
-    ).style.display = "flex";
-
-
-    // Save invoice information
-
-    window.currentOrder = {
+    currentOrder = {
 
         orderId: orderId,
 
-        date: dateText,
-
-        time: timeText,
+        orderDate: orderDate,
 
         name: name,
 
@@ -664,270 +634,457 @@ function placeOrder(event) {
 
         pincode: pincode,
 
-        items: cart.map(function(item) {
-
-            return {
-                name: item.name,
-                price: item.price,
-                quantity: item.quantity
-            };
-
-        }),
+        items: [...cart],
 
         total: total
 
     };
 
+
+    document.getElementById("orderId")
+        .textContent = orderId;
+
+
+    document.getElementById("orderDate")
+        .textContent = orderDate;
+
+
+    document.getElementById("orderCustomerName")
+        .textContent = name;
+
+
+    document.getElementById("orderCustomerPhone")
+        .textContent = phone;
+
+
+    document.getElementById("orderCustomerAddress")
+        .textContent =
+            address +
+            ", " +
+            city +
+            " - " +
+            pincode;
+
+
+    document.getElementById("orderDetails")
+        .innerHTML = orderDetails;
+
+
+    document.getElementById("orderTotal")
+        .textContent =
+            "₹" +
+            total.toLocaleString("en-IN");
+
+
+    const success =
+        document.getElementById("orderSuccess");
+
+
+    success.style.display = "block";
+
+
+    success.scrollIntoView({
+        behavior: "smooth"
+    });
+
 }
 
 
-// =========================================
-// CLOSE SUCCESS
-// =========================================
 
-function closeOrderSuccess() {
+/* =====================================================
+   WHATSAPP ORDER
+===================================================== */
 
-    document.getElementById(
-        "orderSuccess"
-    ).style.display = "none";
+function placeOrderOnWhatsApp() {
 
-}
-
-
-// =========================================
-// PRINT / SAVE INVOICE
-// =========================================
-
-function printInvoice() {
-
-    if (!window.currentOrder) {
+    if (cart.length === 0) {
 
         alert(
-            "Order information not available."
+            "Please add a saree to cart first."
         );
 
         return;
     }
 
 
-    const order =
-        window.currentOrder;
+    const name =
+        document
+        .getElementById("customerName")
+        .value.trim();
 
 
-    let invoiceHTML =
-
-        '<!DOCTYPE html>' +
-
-        '<html>' +
-
-        '<head>' +
-
-            '<title>Krushnai Sarees Invoice</title>' +
-
-            '<style>' +
-
-                'body {' +
-                    'font-family: Arial, sans-serif;' +
-                    'padding: 40px;' +
-                    'color: #222;' +
-                '}' +
-
-                '.invoice {' +
-                    'max-width: 800px;' +
-                    'margin: auto;' +
-                    'border: 1px solid #ddd;' +
-                    'padding: 30px;' +
-                '}' +
-
-                'h1 {' +
-                    'text-align: center;' +
-                '}' +
-
-                '.shop {' +
-                    'text-align: center;' +
-                    'margin-bottom: 30px;' +
-                '}' +
-
-                '.info {' +
-                    'margin-bottom: 25px;' +
-                    'line-height: 1.7;' +
-                '}' +
-
-                'table {' +
-                    'width: 100%;' +
-                    'border-collapse: collapse;' +
-                '}' +
-
-                'th, td {' +
-                    'border: 1px solid #ddd;' +
-                    'padding: 10px;' +
-                    'text-align: left;' +
-                '}' +
-
-                'th {' +
-                    'background: #f4f4f4;' +
-                '}' +
-
-                '.total {' +
-                    'text-align: right;' +
-                    'font-size: 20px;' +
-                    'font-weight: bold;' +
-                    'margin-top: 20px;' +
-                '}' +
-
-                '.thanks {' +
-                    'text-align: center;' +
-                    'margin-top: 40px;' +
-                '}' +
-
-            '</style>' +
-
-        '</head>' +
-
-        '<body>' +
-
-            '<div class="invoice">' +
-
-                '<div class="shop">' +
-
-                    '<h1>KRUSHNAI SAREES</h1>' +
-
-                    '<p>Tradition Wrapped in Elegance</p>' +
-
-                    '<p>Phone: 9763239088</p>' +
-
-                '</div>' +
+    const phone =
+        document
+        .getElementById("customerPhone")
+        .value.trim();
 
 
-                '<div class="info">' +
-
-                    '<strong>Order ID:</strong> ' +
-                    order.orderId +
-                    '<br>' +
-
-                    '<strong>Date:</strong> ' +
-                    order.date +
-                    '<br>' +
-
-                    '<strong>Time:</strong> ' +
-                    order.time +
-                    '<br><br>' +
-
-                    '<strong>Customer:</strong> ' +
-                    order.name +
-                    '<br>' +
-
-                    '<strong>Mobile:</strong> ' +
-                    order.phone +
-                    '<br>' +
-
-                    '<strong>Address:</strong> ' +
-                    order.address +
-                    '<br>' +
-
-                    '<strong>City:</strong> ' +
-                    order.city +
-                    '<br>' +
-
-                    '<strong>Pincode:</strong> ' +
-                    order.pincode +
-
-                '</div>' +
+    const address =
+        document
+        .getElementById("customerAddress")
+        .value.trim();
 
 
-                '<table>' +
-
-                    '<tr>' +
-                        '<th>Saree</th>' +
-                        '<th>Price</th>' +
-                        '<th>Qty</th>' +
-                        '<th>Subtotal</th>' +
-                    '</tr>';
+    const city =
+        document
+        .getElementById("customerCity")
+        .value.trim();
 
 
-    order.items.forEach(function(item) {
+    const pincode =
+        document
+        .getElementById("customerPincode")
+        .value.trim();
 
-        const subtotal =
-            item.price *
-            item.quantity;
+
+    if (
+        !name ||
+        !phone ||
+        !address ||
+        !city ||
+        !pincode
+    ) {
+
+        alert(
+            "Please fill all customer details first."
+        );
+
+        return;
+    }
 
 
-        invoiceHTML +=
+    let total = 0;
 
-            '<tr>' +
 
-                '<td>' +
-                    item.name +
-                '</td>' +
+    let message =
+        "🌸 *KRUSHNAI SAREES - ORDER* 🌸\n\n";
 
-                '<td>₹' +
-                    item.price.toLocaleString("en-IN") +
-                '</td>' +
 
-                '<td>' +
-                    item.quantity +
-                '</td>' +
+    message +=
+        "*Customer Details*\n";
 
-                '<td>₹' +
-                    subtotal.toLocaleString("en-IN") +
-                '</td>' +
 
-            '</tr>';
+    message +=
+        "Name: " +
+        name +
+        "\n";
+
+
+    message +=
+        "Mobile: " +
+        phone +
+        "\n";
+
+
+    message +=
+        "Address: " +
+        address +
+        "\n";
+
+
+    message +=
+        "City: " +
+        city +
+        "\n";
+
+
+    message +=
+        "Pincode: " +
+        pincode +
+        "\n\n";
+
+
+    message +=
+        "*Order Details*\n";
+
+
+    cart.forEach(function(item) {
+
+        const itemTotal =
+            item.price * item.quantity;
+
+
+        total += itemTotal;
+
+
+        message +=
+            item.name +
+            " × " +
+            item.quantity +
+            " = ₹" +
+            itemTotal +
+            "\n";
 
     });
 
 
-    invoiceHTML +=
-
-                '</table>' +
-
-                '<div class="total">' +
-
-                    'TOTAL: ₹' +
-                    order.total.toLocaleString("en-IN") +
-
-                '</div>' +
-
-                '<div class="thanks">' +
-
-                    '<p>Thank you for shopping with Krushnai Sarees! ❤️</p>' +
-
-                '</div>' +
-
-            '</div>' +
-
-        '</body>' +
-
-        '</html>';
+    message +=
+        "\n*TOTAL AMOUNT: ₹" +
+        total.toLocaleString("en-IN") +
+        "*\n\n";
 
 
-    const invoiceWindow =
-        window.open(
-            "",
-            "_blank"
-        );
+    message +=
+        "UPI ID: sahilundale19@okicici";
 
 
-    invoiceWindow.document.write(
-        invoiceHTML
+    const whatsappNumber =
+        "919763239088";
+
+
+    const whatsappURL =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+
+    window.open(
+        whatsappURL,
+        "_blank"
     );
-
-    invoiceWindow.document.close();
-
-
-    invoiceWindow.onload =
-        function() {
-
-            invoiceWindow.print();
-
-        };
 
 }
 
 
-// =========================================
-// PAGE LOAD
-// =========================================
+
+/* =====================================================
+   CLOSE ORDER SUCCESS
+===================================================== */
+
+function closeOrderSuccess() {
+
+    const success =
+        document.getElementById("orderSuccess");
+
+
+    success.style.display = "none";
+
+}
+
+
+
+/* =====================================================
+   PRINT INVOICE
+===================================================== */
+
+function printInvoice() {
+
+    if (!currentOrder) {
+
+        alert(
+            "Please place an order first."
+        );
+
+        return;
+    }
+
+
+    let rows = "";
+
+
+    currentOrder.items.forEach(function(item) {
+
+        const itemTotal =
+            item.price * item.quantity;
+
+
+        rows += `
+
+            <tr>
+
+                <td>
+                    ${item.name}
+                </td>
+
+                <td>
+                    ${item.quantity}
+                </td>
+
+                <td>
+                    ₹${item.price}
+                </td>
+
+                <td>
+                    ₹${itemTotal}
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+
+    const invoice =
+        window.open(
+            "",
+            "_blank",
+            "width=900,height=700"
+        );
+
+
+    invoice.document.write(`
+
+        <!DOCTYPE html>
+
+        <html>
+
+        <head>
+
+            <title>
+                Krushnai Sarees Invoice
+            </title>
+
+            <style>
+
+                body {
+                    font-family: Arial, sans-serif;
+                    padding: 40px;
+                }
+
+                h1 {
+                    color: #4b071f;
+                }
+
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-top: 20px;
+                }
+
+                th,
+                td {
+                    border: 1px solid #ccc;
+                    padding: 10px;
+                }
+
+                th {
+                    background: #f5f5f5;
+                }
+
+                .total {
+                    font-size: 22px;
+                    font-weight: bold;
+                    margin-top: 20px;
+                }
+
+            </style>
+
+        </head>
+
+
+        <body>
+
+            <h1>
+                Krushnai Sarees
+            </h1>
+
+            <h2>
+                Invoice
+            </h2>
+
+            <p>
+                <strong>Order ID:</strong>
+                ${currentOrder.orderId}
+            </p>
+
+            <p>
+                <strong>Date:</strong>
+                ${currentOrder.orderDate}
+            </p>
+
+            <hr>
+
+            <h3>
+                Customer Details
+            </h3>
+
+            <p>
+                Name:
+                ${currentOrder.name}
+            </p>
+
+            <p>
+                Mobile:
+                ${currentOrder.phone}
+            </p>
+
+            <p>
+                Address:
+                ${currentOrder.address},
+                ${currentOrder.city} -
+                ${currentOrder.pincode}
+            </p>
+
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Saree</th>
+
+                        <th>Quantity</th>
+
+                        <th>Price</th>
+
+                        <th>Total</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    ${rows}
+
+                </tbody>
+
+            </table>
+
+
+            <p class="total">
+
+                Total Amount:
+                ₹${currentOrder.total.toLocaleString("en-IN")}
+
+            </p>
+
+
+            <p>
+                Thank you for shopping with
+                Krushnai Sarees! 🌸
+            </p>
+
+        </body>
+
+        </html>
+
+    `);
+
+
+    invoice.document.close();
+
+
+    invoice.focus();
+
+
+    setTimeout(function() {
+
+        invoice.print();
+
+    }, 500);
+
+}
+
+
+
+/* =====================================================
+   PAGE LOAD
+===================================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
