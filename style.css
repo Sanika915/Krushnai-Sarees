@@ -1,18 +1,6 @@
-/* =========================================
-   KRUSHNAI SAREES - MAIN STYLESHEET
-   ========================================= */
-
-
-/* =========================================
-   GOOGLE FONT
-   ========================================= */
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
-
-
-/* =========================================
-   BASIC RESET
-   ========================================= */
+/* =====================================================
+   KRUSHNAI SAREES - COMPLETE CSS
+===================================================== */
 
 * {
     margin: 0;
@@ -27,571 +15,388 @@ html {
 
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: #faf7f2;
-    color: #3d2630;
+    font-family: Arial, sans-serif;
+
+    background: #fff8fb;
+
+    color: #333;
+
     line-height: 1.6;
 }
 
 
-/* =========================================
+/* =====================================================
    HEADER
-   ========================================= */
+===================================================== */
 
 header {
     width: 100%;
-    min-height: 105px;
 
-    background: #5a1022;
+    min-height: 90px;
+
+    background: #4b071f;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
-    padding: 18px 7%;
+    padding: 10px 40px;
 
-    position: sticky;
-    top: 0;
+    position: relative;
+
     z-index: 1000;
-
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
 }
 
 
-/* =========================================
-   LOGO SECTION
-   ========================================= */
+.logo {
+    width: 75px;
 
-.logo-section {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-}
-
-
-.logo-section img {
-    width: 78px;
-    height: 78px;
+    height: 75px;
 
     object-fit: contain;
 
     border-radius: 50%;
-
-    background: #ffffff;
-
-    padding: 3px;
 }
 
-
-.logo-section h1 {
-    font-family: 'Playfair Display', serif;
-
-    color: #ffffff;
-
-    font-size: 2rem;
-
-    letter-spacing: 4px;
-
-    line-height: 1.1;
-}
-
-
-.logo-section p {
-    color: #f3d7a0;
-
-    font-size: 0.85rem;
-
-    font-weight: 600;
-
-    letter-spacing: 5px;
-
-    margin-top: 5px;
-}
-
-
-/* =========================================
-   NAVIGATION
-   ========================================= */
 
 nav {
     display: flex;
+
     align-items: center;
 
-    gap: 38px;
+    gap: 25px;
 }
 
 
 nav a {
-    color: #ffffff;
+    color: white;
 
     text-decoration: none;
 
-    font-size: 1rem;
+    font-size: 16px;
 
-    font-weight: 500;
-
-    transition: 0.3s ease;
+    font-weight: bold;
 }
 
 
 nav a:hover {
-    color: #e6bd68;
+    color: #f5c6d6;
 }
 
 
-/* =========================================
-   HOME / HERO
-   ========================================= */
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero-link {
+    display: block;
+
+    width: 100%;
+
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
 
 .hero {
-    min-height: 620px;
+    width: 100%;
 
-    background:
-        linear-gradient(
-            rgba(91, 16, 34, 0.48),
-            rgba(91, 16, 34, 0.48)
-        ),
-        url("images/654401.webp");
+    min-height: 560px;
+
+    background-image:
+        url("./images/hero.jpg.jpeg");
 
     background-size: cover;
 
     background-position: center;
 
-    display: flex;
+    background-repeat: no-repeat;
+}
 
-    align-items: center;
+
+/* =====================================================
+   COLLECTION
+===================================================== */
+
+.collection-section {
+    padding: 60px 30px;
+
+    background: #fff;
+}
+
+
+.collection-section h2,
+.cart-section h2,
+.checkout-section h2,
+.payment-section h2,
+.about-section h2,
+.contact-section h2 {
+    text-align: center;
+
+    color: #4b071f;
+
+    font-size: 32px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search-box {
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+
+.search-box input {
+    width: 80%;
+
+    max-width: 600px;
+
+    padding: 13px 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 7px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+
+.search-box input:focus {
+    border-color: #7b1538;
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+.filter-buttons {
+    display: flex;
 
     justify-content: center;
 
-    text-align: center;
+    flex-wrap: wrap;
 
-    padding: 80px 20px;
+    gap: 8px;
+
+    margin-bottom: 35px;
 }
 
 
-.hero-content {
-    max-width: 850px;
+button {
+    background: #4b071f;
 
-    color: #ffffff;
-}
+    color: white;
 
-
-.small-title {
-    font-size: 1rem;
-
-    font-weight: 600;
-
-    letter-spacing: 5px;
-
-    color: #f3d7a0;
-
-    margin-bottom: 18px;
-}
-
-
-.hero h2 {
-    font-family: 'Playfair Display', serif;
-
-    font-size: 4rem;
-
-    line-height: 1.15;
-
-    margin-bottom: 20px;
-}
-
-
-.hero-content > p:not(.small-title) {
-    font-size: 1.15rem;
-
-    max-width: 700px;
-
-    margin: 0 auto 30px;
-
-    color: #ffffff;
-}
-
-
-/* =========================================
-   HERO BUTTON
-   ========================================= */
-
-.hero button {
     border: none;
 
-    background: #d3a437;
+    padding: 10px 18px;
 
-    color: #ffffff;
-
-    padding: 14px 32px;
-
-    border-radius: 5px;
-
-    font-family: 'Poppins', sans-serif;
-
-    font-size: 1rem;
-
-    font-weight: 600;
+    border-radius: 6px;
 
     cursor: pointer;
 
-    transition: 0.3s ease;
+    font-size: 15px;
 
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+    transition: 0.2s;
 }
 
 
-.hero button:hover {
-    background: #b98920;
+button:hover {
+    background: #7b1538;
 
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
 
-/* =========================================
-   COLLECTION SECTION
-   ========================================= */
-
-.collection {
-    padding: 90px 7%;
-
-    background: #faf7f2;
-}
-
-
-.section-heading {
-    text-align: center;
-
-    margin-bottom: 55px;
-}
-
-
-.section-heading p {
-    color: #9b6c35;
-
-    font-size: 0.9rem;
-
-    font-weight: 600;
-
-    letter-spacing: 5px;
-
-    margin-bottom: 10px;
-}
-
-
-.section-heading h2 {
-    font-family: 'Playfair Display', serif;
-
-    color: #5a1022;
-
-    font-size: 3rem;
-
-    margin-bottom: 8px;
-}
-
-
-.section-heading span {
-    color: #777;
-
-    font-size: 1rem;
-}
-
-
-/* =========================================
-   SAREE CONTAINER
-   ========================================= */
+/* =====================================================
+   SAREE GRID
+===================================================== */
 
 .saree-container {
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: auto;
+
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
 
-    gap: 32px;
-
-    align-items: stretch;
+    gap: 25px;
 }
 
 
-/* =========================================
+/* =====================================================
    SAREE CARD
-   ========================================= */
+===================================================== */
 
 .saree-card {
-    background: #ffffff;
+    background: white;
 
-    border-radius: 10px;
+    border: 1px solid #ead5df;
 
-    overflow: hidden;
+    border-radius: 12px;
 
-    box-shadow: 0 8px 25px rgba(72, 37, 46, 0.10);
+    padding: 18px;
 
-    display: flex;
+    text-align: center;
 
-    flex-direction: column;
+    box-shadow:
+        0 4px 12px
+        rgba(0, 0, 0, 0.08);
 
-    transition: 0.35s ease;
+    transition: 0.3s;
 }
 
 
 .saree-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-4px);
 
-    box-shadow: 0 15px 35px rgba(72, 37, 46, 0.16);
+    box-shadow:
+        0 8px 20px
+        rgba(0, 0, 0, 0.14);
 }
 
 
-/* =========================================
+/* =====================================================
    SAREE IMAGE
-   ========================================= */
+===================================================== */
 
 .saree-image {
     width: 100%;
 
-    height: 360px;
+    height: 350px;
 
-    position: relative;
-
-    overflow: hidden;
-
-    background: #eee;
-}
-
-
-.saree-image img {
-    width: 100%;
-
-    height: 100%;
+    object-fit: contain;
 
     display: block;
 
-    object-fit: cover;
-
-    object-position: center;
-
-    transition: 0.5s ease;
-}
-
-
-.saree-card:hover .saree-image img {
-    transform: scale(1.04);
-}
-
-
-/* =========================================
-   TAG
-   ========================================= */
-
-.tag {
-    position: absolute;
-
-    top: 18px;
-
-    left: 18px;
-
-    background: #7a1740;
-
-    color: #ffffff;
-
-    padding: 8px 15px;
-
-    border-radius: 4px;
-
-    font-size: 0.75rem;
-
-    font-weight: 600;
-
-    letter-spacing: 1.5px;
-}
-
-
-/* =========================================
-   SAREE DETAILS
-   ========================================= */
-
-.saree-details {
-    padding: 28px 30px 30px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    flex: 1;
-}
-
-
-.category {
-    color: #8e6a45;
-
-    font-size: 0.75rem;
-
-    font-weight: 600;
-
-    letter-spacing: 2.5px;
-
-    margin-bottom: 12px;
-}
-
-
-.saree-details h3 {
-    font-family: 'Playfair Display', serif;
-
-    color: #5a1022;
-
-    font-size: 1.7rem;
-
-    line-height: 1.3;
-
-    margin-bottom: 14px;
-}
-
-
-.saree-details > p:not(.category) {
-    color: #666;
-
-    font-size: 0.95rem;
-
-    line-height: 1.7;
-
-    margin-bottom: 20px;
-}
-
-
-/* =========================================
-   PRICE
-   IMPORTANT:
-   ALL DIGITS SAME SIZE
-   ========================================= */
-
-.saree-details h4 {
-    font-family: 'Poppins', sans-serif;
-
-    color: #5a1022;
-
-    font-size: 1.5rem;
-
-    font-weight: 700;
-
-    line-height: 1.2;
-
-    letter-spacing: 0;
-
-    margin-top: auto;
-
-    margin-bottom: 18px;
-
-    white-space: nowrap;
-}
-
-
-/* =========================================
-   VIEW DETAILS BUTTON
-   ========================================= */
-
-.saree-details button {
-    width: fit-content;
-
-    min-width: 165px;
-
-    padding: 12px 25px;
-
-    border: none;
-
-    border-radius: 4px;
-
-    background: #d3a437;
-
-    color: #ffffff;
-
-    font-family: 'Poppins', sans-serif;
-
-    font-size: 0.95rem;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: 0.3s ease;
-}
-
-
-.saree-details button:hover {
-    background: #b98920;
-
-    transform: translateY(-2px);
-}
-
-
-/* =========================================
-   ABOUT SECTION
-   ========================================= */
-
-.about {
-    padding: 100px 7%;
-
-    background: #5a1022;
-
-    color: #ffffff;
-}
-
-
-.about-content {
-    max-width: 850px;
-
     margin: auto;
 
-    text-align: center;
+    border-radius: 8px;
 }
 
 
-.about-content > p:first-child {
-    color: #e6bd68;
+.saree-card h3 {
+    color: #4b071f;
 
-    font-size: 0.9rem;
+    font-size: 20px;
 
-    font-weight: 600;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 12px;
+    margin-top: 15px;
 }
 
 
-.about-content h2 {
-    font-family: 'Playfair Display', serif;
-
-    font-size: 3rem;
-
-    margin-bottom: 22px;
+.saree-card p {
+    margin: 5px 0;
 }
 
 
-.about-content > p:not(:first-child) {
-    color: #f4e8e8;
+.price {
+    color: #4b071f;
 
-    font-size: 1rem;
+    font-size: 20px;
 
-    line-height: 1.9;
+    font-weight: bold;
 }
 
 
-/* =========================================
-   FEATURES
-   ========================================= */
+.saree-select {
+    width: 17px;
 
-.features {
+    height: 17px;
+
+    margin-right: 5px;
+}
+
+
+.card-buttons {
     display: flex;
 
     justify-content: center;
 
-    gap: 70px;
+    flex-wrap: wrap;
 
-    margin-top: 50px;
+    gap: 5px;
+
+    margin-top: 10px;
 }
 
 
-.features div {
+/* =====================================================
+   SELECTED CART
+===================================================== */
+
+.selected-cart {
+    text-align: center;
+
+    margin-top: 30px;
+}
+
+
+/* =====================================================
+   CART
+===================================================== */
+
+.cart-section {
+    padding: 60px 30px;
+
+    background: #fff4f8;
+
+    min-height: 300px;
+}
+
+
+#cartItems {
+    width: 100%;
+
+    max-width: 900px;
+
+    margin: auto;
+}
+
+
+.cart-item {
+    background: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    padding: 15px;
+
+    margin-bottom: 12px;
+
     display: flex;
 
-    flex-direction: column;
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+
+.cart-item-info {
+    flex: 1;
+}
+
+
+.quantity-controls {
+    display: flex;
 
     align-items: center;
 
@@ -599,166 +404,257 @@ nav a:hover {
 }
 
 
-.features strong {
-    color: #e6bd68;
-
-    font-size: 1.4rem;
+.quantity-controls button {
+    padding: 5px 12px;
 }
 
 
-.features span {
-    font-size: 0.9rem;
-
-    color: #ffffff;
-}
-
-
-/* =========================================
-   CONTACT SECTION
-   ========================================= */
-
-.contact {
-    padding: 90px 7%;
-
+.cart-section h3 {
     text-align: center;
 
-    background: #faf7f2;
+    color: #4b071f;
+
+    font-size: 24px;
+
+    margin: 20px 0;
 }
 
 
-.contact > p:first-child {
-    color: #9b6c35;
+.cart-section > button {
+    display: block;
 
-    font-size: 0.85rem;
-
-    font-weight: 600;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 10px;
+    margin: 10px auto;
 }
 
 
-.contact h2 {
-    font-family: 'Playfair Display', serif;
+/* =====================================================
+   CHECKOUT
+===================================================== */
 
-    color: #5a1022;
+.checkout-section {
+    padding: 60px 30px;
 
-    font-size: 3rem;
-
-    margin-bottom: 35px;
+    background: white;
 }
 
 
-.contact-details {
+#checkoutForm {
+    width: 100%;
+
+    max-width: 650px;
+
+    margin: auto;
+
     display: flex;
 
-    justify-content: center;
+    flex-direction: column;
 
-    flex-wrap: wrap;
-
-    gap: 25px 55px;
+    gap: 8px;
 }
 
 
-.contact-details p {
-    color: #555;
+#checkoutForm label {
+    font-weight: bold;
 
-    font-size: 1rem;
+    color: #4b071f;
+
+    margin-top: 10px;
 }
 
 
-.contact-details strong {
-    color: #5a1022;
+#checkoutForm input,
+#checkoutForm textarea {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+
+    font-size: 16px;
 }
 
 
-/* =========================================
+#checkoutForm textarea {
+    min-height: 100px;
+
+    resize: vertical;
+}
+
+
+#checkoutForm button {
+    margin-top: 20px;
+
+    padding: 12px;
+}
+
+
+/* =====================================================
+   PAYMENT
+===================================================== */
+
+.payment-section {
+    padding: 60px 30px;
+
+    background: #fff4f8;
+
+    text-align: center;
+}
+
+
+.payment-section p {
+    margin: 12px 0;
+
+    font-size: 17px;
+}
+
+
+.payment-amount {
+    color: #4b071f;
+
+    font-size: 26px !important;
+
+    margin: 20px 0 !important;
+}
+
+
+.payment-qr {
+    width: 250px;
+
+    height: 250px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 20px auto;
+
+    border: 5px solid white;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, 0.15);
+}
+
+
+.payment-warning {
+    font-size: 14px !important;
+
+    color: #777;
+}
+
+
+/* =====================================================
+   ORDER SUCCESS
+===================================================== */
+
+.order-success {
+    padding: 50px 30px;
+
+    background: white;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.order-success h2 {
+    color: #4b071f;
+
+    margin-bottom: 20px;
+}
+
+
+.order-success h3 {
+    color: #4b071f;
+
+    margin-top: 20px;
+}
+
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about-section {
+    padding: 60px 30px;
+
+    background: white;
+
+    text-align: center;
+}
+
+
+.about-section p {
+    max-width: 800px;
+
+    margin: 15px auto;
+
+    font-size: 17px;
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact-section {
+    padding: 60px 30px;
+
+    background: #fff4f8;
+
+    text-align: center;
+}
+
+
+.contact-section p {
+    margin: 10px 0;
+
+    font-size: 17px;
+}
+
+
+/* =====================================================
    FOOTER
-   ========================================= */
+===================================================== */
 
 footer {
-    background: #330b18;
+    background: #4b071f;
 
-    color: #ffffff;
+    color: white;
 
     text-align: center;
 
-    padding: 40px 20px;
+    padding: 20px;
 }
 
 
-footer h3 {
-    font-family: 'Playfair Display', serif;
+/* =====================================================
+   RESPONSIVE
+===================================================== */
 
-    font-size: 1.8rem;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 8px;
-}
-
-
-footer p {
-    color: #d8c2c7;
-
-    font-size: 0.85rem;
-
-    margin-top: 5px;
-}
-
-
-/* =========================================
-   RESPONSIVE - TABLET
-   ========================================= */
-
-@media (max-width: 1000px) {
-
-    header {
-        padding: 15px 4%;
-    }
-
-
-    nav {
-        gap: 20px;
-    }
-
-
-    .hero h2 {
-        font-size: 3rem;
-    }
-
+@media (max-width: 900px) {
 
     .saree-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
 }
 
 
-/* =========================================
-   RESPONSIVE - MOBILE
-   ========================================= */
-
-@media (max-width: 700px) {
+@media (max-width: 600px) {
 
     header {
         flex-direction: column;
 
-        gap: 18px;
+        gap: 10px;
 
-        padding: 18px 20px;
-    }
-
-
-    .logo-section h1 {
-        font-size: 1.5rem;
-    }
-
-
-    .logo-section img {
-        width: 65px;
-        height: 65px;
+        padding: 15px;
     }
 
 
@@ -767,27 +663,12 @@ footer p {
 
         justify-content: center;
 
-        gap: 15px 22px;
+        gap: 12px;
     }
 
 
     .hero {
-        min-height: 550px;
-    }
-
-
-    .hero h2 {
-        font-size: 2.3rem;
-    }
-
-
-    .hero-content > p:not(.small-title) {
-        font-size: 1rem;
-    }
-
-
-    .section-heading h2 {
-        font-size: 2.2rem;
+        min-height: 400px;
     }
 
 
@@ -797,24 +678,29 @@ footer p {
 
 
     .saree-image {
-        height: 400px;
+        height: 330px;
     }
 
 
-    .about-content h2 {
-        font-size: 2.2rem;
-    }
-
-
-    .features {
+    .cart-item {
         flex-direction: column;
 
-        gap: 25px;
+        text-align: center;
     }
 
 
-    .contact h2 {
-        font-size: 2.2rem;
+    .search-box input {
+        width: 95%;
+    }
+
+
+    .card-buttons {
+        flex-direction: column;
+    }
+
+
+    .card-buttons button {
+        width: 100%;
     }
 
 }
